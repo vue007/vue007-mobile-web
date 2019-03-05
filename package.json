@@ -10,6 +10,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "mand-mobile": "^2.0.0",
     "normalize.css": "^8.0.0",
     "register-service-worker": "^1.5.2",
@@ -30,6 +31,7 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-import": "^1.11.0",
+    "babel-plugin-lodash": "^3.3.4",
     "css-loader": "^2.1.0",
     "fibers": "^3.1.1",
     "postcss-pxtorem": "^4.0.1",

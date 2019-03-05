@@ -10,6 +10,7 @@ module.exports = {
         libraryName: 'mand-mobile',
         libraryDirectory: 'components'
       }
-    ]
+    ],
+    'lodash',// 引入 lodash 压缩
   ]
 }
