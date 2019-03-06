@@ -1,0 +1,34 @@
+@import "reset";
+
+#app {
+  height: 100%;
+}
+
+/* base font-size */
+@for $baseFontSize from 12 through 64 { // 12 - 62 偶数字号
+  @if $baseFontSize % 2 == 0 {
+    .f#{$baseFontSize} { font-size: $baseFontSize + px; }
+  }
+}
+@each $baseFontSize in 21, 88 { // 特殊字号
+  .f#{$baseFontSize} { font-size: $baseFontSize + px; }
+}
+
+/* base color */
+@for $baseColor from 0 through 9 { // 000 -> 999
+    .co#{$baseColor} { color: #{'#'+$baseColor+''+$baseColor+''+$baseColor}; }
+}
+@each $baseColor in 'A', 'B', 'C', 'D', 'E', 'F' { // 特殊字号
+  .co#{$baseColor} { color: #{'#'+$baseColor+''+$baseColor+''+$baseColor}; }
+}
+
+/* base margin */
+@for $baseMargin from 1 through 100 { // 12 - 62 偶数字号
+  @if $baseMargin % 5 == 0 {
+    .m#{$baseMargin} { margin: $baseMargin + px; }
+    .mt#{$baseMargin} { margin-top: $baseMargin + px; }
+    .ml#{$baseMargin} { margin-left: $baseMargin + px; }
+    .mb#{$baseMargin} { margin-bottom: $baseMargin + px; }
+    .mr#{$baseMargin} { margin-right: $baseMargin + px; }
+  }
+}

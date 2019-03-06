@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { getToken } from '@/common/utils/auth';
-import { CodeEnum } from '@/common/type/enum/code.enum';
+import { CodeEnum } from '@/types/enum/code.enum';
 
 const config: AxiosRequestConfig = {
-    baseURL: process.env.VUE_APP_API_URL ? process.env.VUE_APP_API_URL : '', // api的base_url,
+    baseURL: process.env.VUE_APP_BASE_URL, // api的base_url,
     timeout: 5000,
     withCredentials: false, // 关闭cookies
     responseType: 'json',
