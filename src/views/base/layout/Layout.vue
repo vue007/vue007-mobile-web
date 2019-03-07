@@ -3,41 +3,13 @@
 <!-- @Description 页面布局 -->
 <template>
   <div class="layout">
-    <Header>
-    </Header>
+    <layout-header/>
+
     <div class="layout-content">
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
-      <h1>sdgsdfgdgf</h1>
+      <router-view/>
     </div>
-    <Footer>
-    </Footer>
+
+    <layout-footer/>
   </div>
 </template>
 
@@ -47,12 +19,12 @@
 
   const baseModule = namespace('base');
 
-  import Header from './Header'
-  import Footer from './Footer'
+  import LayoutHeader from './LayoutHeader'
+  import LayoutFooter from './LayoutFooter'
 
   @Component({
     components: {
-      Header, Footer,
+      LayoutHeader, LayoutFooter,
     }
   })
   export default class Layout extends Vue {

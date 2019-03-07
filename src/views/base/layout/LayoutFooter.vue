@@ -5,16 +5,17 @@
   <div class="layout-footer">
     <md-tab-bar
         v-model="current"
-        :items="items"
+        :items="tabItems"
         :has-ink="false"
+        @change="handleTabChange"
     >
       <template slot="item" slot-scope="{ item }">
         <div class="custom-item">
           <div class="icon">
-            <md-icon :name="item.icon" />
+            <md-icon :name="item.meta.icon" />
           </div>
           <div class="text">
-            <span v-text="item.label"></span>
+            <span v-text="item.meta.title"></span>
           </div>
         </div>
       </template>
@@ -24,20 +25,26 @@
 
 <script lang="ts">
   import {Component, Prop, Vue} from "vue-property-decorator";
+  import { baseTabRoutesConf } from '@/router/routesConf'
 
-  import {TabBar, Icon} from 'mand-mobile'
+  import { RouteConfig } from 'vue-router';
+  import {TabBar, Icon} from 'mand-mobile';
   @Component({
     components: {
       [TabBar.name]: TabBar, [Icon.name]: Icon
     }
   })
-  export default class Footer extends Vue {
-    private current = 1;
-    private items:Array = [
-        {name: 1, label: '首页', icon: 'home'},
-        {name: 3, label: '发布', icon: 'camera'},
-        {name: 5, label: '我的', icon: 'user'}
-      ];
+  export default class LayoutFooter extends Vue {
+    private tabItems:Array<RouteConfig> = baseTabRoutesConf;
+
+    get current() { // 底部导航当前选项
+      return this.$route.name
+    }
+    set current(name: string) {} // hack v-model
+
+    handleTabChange(item, index, prevIndex) {
+      this.$router.push({ name: item.name})
+    }
 
   }
 </script>

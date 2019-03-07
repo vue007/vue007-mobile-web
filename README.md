@@ -37,3 +37,7 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+##规范
+1.页面尽量命名为index.vue 特殊情况也请以小写开头如；组件以大写开头 如 Layout.vue

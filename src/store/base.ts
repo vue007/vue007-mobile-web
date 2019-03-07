@@ -9,7 +9,7 @@ import User from '@/types/User';
 export default {
   namespaced: true,
   state: {
-    isCollapse: false,
+    showHeader: false,
   },
   mutations: {
     set_isCollapse(state: any, flag: boolean) {

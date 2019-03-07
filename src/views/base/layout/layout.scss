@@ -1,10 +1,15 @@
 
+$header-height: 90px;
+$footer-height: 100px;
+
 .layout {
   &-header {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: #FFF;
+    box-shadow: 0 -2px 4px rgba(#000, 0.5);
+    height: $header-height;
   }
 
   &-content {
@@ -12,11 +17,15 @@
     overflow-x: hidden;
     height: 100%;
     width: 100%;
+    padding-top: $header-height;
+    padding-bottom: $footer-height;
   }
 
   &-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: 0 2px 4px rgba(#000, 0.5);
+    height: $footer-height;
   }
 }

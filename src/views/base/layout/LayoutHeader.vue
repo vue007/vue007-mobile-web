@@ -3,31 +3,30 @@
 <!-- @Description 布局头部 -->
 <template>
   <div class="layout-header">
-    <div class="nav">
-      <div class="nav-left">
-        <md-icon name="arrow-left"></md-icon>
-      </div>
-      <div class="nav-title">
-        {{ title }}
-      </div>
-      <div class="nav-right">
-        <md-icon name="motor-vehicle"></md-icon>
-      </div>
-    </div>
+    <hi-header :title="title" @leftClick="handleLeftClick" >
+      <icon slot="left" name="arrow-left"></icon>
+      <div slot="right" style="width: 16px;"></div>
+    </hi-header>
   </div>
 </template>
 
 <script lang="ts">
   import {Component, Prop, Vue} from "vue-property-decorator";
   import { Icon } from 'mand-mobile';
+  import { HiHeader } from '@/components/hive/index';
 
   @Component({
     components: {
-      [Icon.name]: Icon
+      Icon,
+      HiHeader,
     }
   })
-  export default class Header extends Vue {
+  export default class LayoutHeader extends Vue {
     private title: string = '首页';
+
+    handleLeftClick() {
+      this.$router.go(-1);
+    }
   }
 </script>
 
@@ -41,16 +40,6 @@
     padding: 0 20px;
     font-size: 30px;
     height: 90px;
-
-    &-left {
-
-    }
-    &-title {
-
-    }
-    &-right {
-
-    }
   }
 </style>
 
