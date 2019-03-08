@@ -1,4 +1,4 @@
-import {RouteConfig} from 'vue-router';
+import {RouteConfigInfo} from '@/types/base/Router';
 
 /**
  * @Author: akai
@@ -6,12 +6,7 @@ import {RouteConfig} from 'vue-router';
  * @Description: TODO
  */
 
-export interface RouteConfigInfo extends RouteConfig { // 路由配置信息： 组件通过名称进行注入
-  component:any; //
-  children?: any
-}
-
-let baseTabRoutesConf:Array<RouteConfigInfo> = [
+let tabRoutersConf:Array<RouteConfigInfo> = [
   {
     path: '/home',
     name: 'home',
@@ -32,11 +27,4 @@ let baseTabRoutesConf:Array<RouteConfigInfo> = [
   },
 ];
 
-const routesConf:Array<RouteConfigInfo> = baseTabRoutesConf.concat([
-
-])
-
-export {
-  baseTabRoutesConf,
-  routesConf,
-}
+export { tabRoutersConf }

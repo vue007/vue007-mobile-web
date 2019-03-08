@@ -4,6 +4,7 @@
 <template>
   <div class="page">
     <HelloWorld msg="Welcome to Your Mand Mobile"/>
+    UserCenter
   </div>
 </template>
 

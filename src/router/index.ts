@@ -1,15 +1,11 @@
 import Vue from 'vue';
-import Router, { RouteConfig } from 'vue-router';
+import Router from 'vue-router';
 import BaseLayout from '../views/base/layout/Layout.vue';
 
-import {RouteConfigInfo, routesConf} from './routesConf';
+import { tabRoutersConf } from './tabRoutersConf';
+import {catchRoute, matchTabRoutes} from '@/router/utils';
+
 Vue.use(Router);
-
-
-function catchRoute(error:any) { // TODO 通过@import catch 实现缓存问题
-  console.log(error,'catchRoute')
-}
-
 
 const lazyRoutes:any = {
   Home: () => import('@/views/home/index.vue').catch(catchRoute),
@@ -17,25 +13,8 @@ const lazyRoutes:any = {
   UserCenter: () => import('@/views/userCenter/index.vue').catch(catchRoute),
 }
 
-/**
- *
- * @param routesConf 传入路由配置
- */
-function matchLazyRoutes(routesConf: Array<RouteConfigInfo> ) {
-  for (let i = 0; i < routesConf.length; i++) {
-    const syncName = routesConf[i].component;
-    if ( syncName && typeof syncName == 'string') {
-      /** 通过 component name 字符串 和 lazyRoutes key 进行匹配 */
-      routesConf[i].component = lazyRoutes[syncName];
-    }
-    if (routesConf[i].children && routesConf[i].children.length) { // 递归子路由
-      matchLazyRoutes(routesConf[i].children);
-    }
-  }
-}
-matchLazyRoutes(routesConf);
+matchTabRoutes(tabRoutersConf);
 
-// @ts-ignore
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -45,7 +24,9 @@ const router = new Router({
       redirect: '/home',
       name: 'index',
       component: BaseLayout,
-      children: routesConf
+      children: tabRoutersConf.concat([
+          // 其他页面路由
+      ])
     },
   ],
 });
@@ -67,4 +48,4 @@ router.beforeEach( (to:any, from:any, next:any) => {
 router.afterEach( (to:any, from:any) => {
 });
 
-export { router };
+export { router, lazyRoutes };

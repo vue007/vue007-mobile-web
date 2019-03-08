@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
+  import { Component, Prop, Vue } from "vue-property-decorator";
   import { Icon } from 'mand-mobile';
   import { HiHeader } from '@/components/hive/index';
 
@@ -22,7 +22,9 @@
     }
   })
   export default class LayoutHeader extends Vue {
-    private title: string = '首页';
+    get title() {
+      return this.$route.meta.title
+    }
 
     handleLeftClick() {
       this.$router.go(-1);

@@ -25,7 +25,7 @@
 
 <script lang="ts">
   import {Component, Prop, Vue} from "vue-property-decorator";
-  import { baseTabRoutesConf } from '@/router/routesConf'
+  import { tabRoutersConf } from '@/router/tabRoutersConf'
 
   import { RouteConfig } from 'vue-router';
   import {TabBar, Icon} from 'mand-mobile';
@@ -35,15 +35,15 @@
     }
   })
   export default class LayoutFooter extends Vue {
-    private tabItems:Array<RouteConfig> = baseTabRoutesConf;
+    private tabItems:Array<RouteConfig> = tabRoutersConf;
 
     get current() { // 底部导航当前选项
-      return this.$route.name
+      return this.$route.name;
     }
     set current(name: string) {} // hack v-model
 
     handleTabChange(item, index, prevIndex) {
-      this.$router.push({ name: item.name})
+      this.$router.push({ name: item.name});
     }
 
   }
