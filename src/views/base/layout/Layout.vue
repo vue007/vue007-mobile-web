@@ -3,7 +3,7 @@
 <!-- @Description 页面布局 -->
 <template>
   <div class="layout">
-    <layout-header/>
+    <layout-header v-if="hiddenHeader"/>
 
     <div class="layout-content">
       <router-view/>
@@ -28,6 +28,25 @@
     }
   })
   export default class Layout extends Vue {
+    get hiddenHeader() { // TODO 优化成全局方法
+      return this.$route.meta.header === 'hidden';
+    }
+    get hiddenFooter() { // TODO 优化成全局方法
+      return this.$route.meta.footer === 'hidden';
+    }
+    get contentStyle() {
+      if ( this.hiddenHeader ) {
+        return {
+          paddingTop: 0
+        }
+      }
+      if ( this.hiddenFooter ) {
+        return {
+          paddingBottom: 0
+        }
+      }
+    }
+
   }
 </script>
 

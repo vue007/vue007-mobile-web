@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import BaseLayout from '../views/base/layout/Layout.vue';
+import BaseLayout from '@/views/base/layout/Layout.vue';
 
 import { tabRoutersConf } from './tabRoutersConf';
 import {catchRoute, matchTabRoutes} from '@/router/utils';
@@ -8,9 +8,12 @@ import {catchRoute, matchTabRoutes} from '@/router/utils';
 Vue.use(Router);
 
 const lazyRoutes:any = {
-  Home: () => import('@/views/home/index.vue').catch(catchRoute),
-  Add: () => import('@/views/About.vue').catch(catchRoute),
-  UserCenter: () => import('@/views/userCenter/index.vue').catch(catchRoute),
+  Home: () => import(/* webpackChunkName: "home" */
+      '@/views/home/index.vue').catch(catchRoute),
+  Add: () => import(/* webpackChunkName: "add" */
+      '@/views/About.vue').catch(catchRoute),
+  UserCenter: () => import(/* webpackChunkName: "user-center" */
+      '@/views/userCenter/index.vue').catch(catchRoute),
 }
 
 matchTabRoutes(tabRoutersConf);
@@ -26,6 +29,12 @@ const router = new Router({
       component: BaseLayout,
       children: tabRoutersConf.concat([
           // 其他页面路由
+        {
+          path: '/login',
+          name: 'login',
+          component: () => import(/* webpackChunkName: "login" */ '@/views/base/login/index.vue').catch(catchRoute),
+          meta: { title: '主页', icon: 'home', header: 'hidden' }
+        },
       ])
     },
   ],
