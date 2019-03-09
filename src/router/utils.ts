@@ -1,4 +1,4 @@
-import {RouteConfigInfo} from '@/types/base/Router';
+import {RouteConfigInfo} from '@/common/types/base/Router';
 import {lazyRoutes} from '@/router/index';
 
 /**

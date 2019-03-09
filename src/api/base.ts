@@ -1,5 +1,5 @@
 import fetch from '../common/fetch';
-import User from '@/types/User';
+import User from '@/common/types/User';
 
 export function login(user: User) {
   return fetch({

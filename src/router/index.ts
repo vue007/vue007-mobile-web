@@ -27,8 +27,7 @@ const router = new Router({
       redirect: '/home',
       name: 'index',
       component: BaseLayout,
-      children: tabRoutersConf.concat([
-          // 其他页面路由
+      children: tabRoutersConf.concat([ // 其他页面路由
         {
           path: '/login',
           name: 'login',

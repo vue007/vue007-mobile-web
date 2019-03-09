@@ -2,7 +2,7 @@
 <!-- @Create 2019-03-06 15:45 -->
 <!-- @Description 布局头部 -->
 <template>
-  <div class="layout-header" v-if="!hiddenHeader">
+  <div class="layout-header">
     <hi-header :title="title" @leftClick="handleLeftClick" >
       <icon slot="left" name="arrow-left"></icon>
       <div slot="right" style="width: 16px;"></div>
@@ -26,6 +26,7 @@
       return this.$route.meta.title
     }
     get hiddenHeader() { // TODO 优化成全局方法
+
       return this.$route.meta.header === 'hidden';
     }
     handleLeftClick() {

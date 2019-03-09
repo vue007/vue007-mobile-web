@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { getToken } from '@/common/utils/auth';
-import { CodeEnum } from '@/types/enum/code.enum';
+import { CodeEnum } from '@/common/types/enum/code.enum';
 
 const config: AxiosRequestConfig = {
     baseURL: process.env.VUE_APP_BASE_URL, // api的base_url,
