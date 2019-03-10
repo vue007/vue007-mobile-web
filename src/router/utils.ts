@@ -17,6 +17,8 @@ export function matchTabRoutes(routesConf: Array<RouteConfigInfo> ) {
     if ( syncName && typeof syncName == 'string') {
       /** 通过 component name 字符串 和 lazyRoutes key 进行匹配 */
       routesConf[i].component = lazyRoutes[syncName];
+      // @ts-ignore
+      routesConf[i].meta.isTab = true;
     }
     if (routesConf[i].children && routesConf[i].children.length) { // 递归子路由
       matchTabRoutes(routesConf[i].children);

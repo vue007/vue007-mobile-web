@@ -39,8 +39,17 @@ const base: Module<any, any> = {
   },
 
   getters: {
-    showHeader: (state, getters, rootState,) => { // TODO 如何通过解构的方式导入参数
+    showHeader: (state, getters, rootState) => { // TODO 如何通过解构的方式导入参数
       return rootState.route.meta.header !== 'hidden';
+    },
+    showFooter: (state, getters, rootState) => {
+      console.log(rootState.route.meta)
+
+      if ( rootState.route.meta.footer === 'hidden' ) {
+        return false;
+      } else {
+        return rootState.route.meta.isTab;
+      }
     }
   }
 };

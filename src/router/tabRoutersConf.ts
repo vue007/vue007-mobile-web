@@ -17,7 +17,7 @@ let tabRoutersConf:Array<RouteConfigInfo> = [
     path: '/add',
     name: 'add',
     component: 'Add',
-    meta: { title: '发布', icon: 'camera' }
+    meta: { title: '发布', icon: 'camera', footer: 'hidden' }
   },
   {
     path: '/user-center',

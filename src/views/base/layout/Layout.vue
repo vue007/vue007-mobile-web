@@ -9,7 +9,7 @@
       <router-view/>
     </div>
 
-    <layout-footer/>
+    <layout-footer v-if="showFooter"/>
   </div>
 </template>
 
@@ -30,19 +30,15 @@
   export default class Layout extends Vue {
 
     @baseModule.Getter showHeader;
-    // get hiddenHeader() { // TODO 优化成全局方法
-    //   return this.$route.meta.header === 'hidden';
-    // }
-    get hiddenFooter() { // TODO 优化成全局方法
-      return this.$route.meta.footer === 'hidden';
-    }
+    @baseModule.Getter showFooter;
+
     get contentStyle() {
       if ( !this.showHeader ) {
         return {
           paddingTop: 0
         }
       }
-      if ( this.hiddenFooter ) {
+      if ( this.showFooter ) {
         return {
           paddingBottom: 0
         }
