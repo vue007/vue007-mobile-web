@@ -5,6 +5,6 @@ export function login(user: User) {
   return fetch({
     url: '/login',
     method: 'post',
-    data: user
+    data: user,
   });
 }

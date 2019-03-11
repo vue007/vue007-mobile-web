@@ -1,6 +1,6 @@
 <!-- @Author akai -->
 <!-- @Create 2019-03-06 15:45 -->
-<!-- @Description TODO -->
+<!-- @Description 布局底部导航栏 -->
 <template>
   <div class="layout-footer">
     <md-tab-bar
@@ -24,29 +24,31 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import { tabRoutersConf } from '@/router/tabRoutersConf'
+import {Component, Prop, Vue} from 'vue-property-decorator';
+import { tabRoutersConf } from '@/router/tabRoutersConf';
 
-  import { RouteConfig } from 'vue-router';
-  import {TabBar, Icon} from 'mand-mobile';
-  @Component({
-    components: {
-      [TabBar.name]: TabBar, [Icon.name]: Icon
-    }
-  })
-  export default class LayoutFooter extends Vue {
-    private tabItems:Array<RouteConfig> = tabRoutersConf;
+import { RouteConfig } from 'vue-router';
+import {TabBar, Icon} from 'mand-mobile';
+@Component({
+  components: {
+    [TabBar.name]: TabBar, [Icon.name]: Icon,
+  },
+})
+export default class LayoutFooter extends Vue {
+  private tabItems: RouteConfig[] = tabRoutersConf;
 
-    get current() { // 底部导航当前选项
-      return this.$route.name;
-    }
-    set current(name: string) {} // hack v-model
-
-    handleTabChange(item, index, prevIndex) {
-      this.$router.push({ name: item.name});
-    }
-
+  get current() { // 底部导航当前选项
+    return this.$route.name;
   }
+  set current(name: string) {
+    // hack v-model
+  }
+
+  public handleTabChange(item: any) {
+    this.$router.push({ name: item.name});
+  }
+
+}
 </script>
 
 <style lang="scss" scoped>

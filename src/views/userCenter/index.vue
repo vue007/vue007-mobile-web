@@ -9,18 +9,18 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
+import {Component, Prop, Vue} from 'vue-property-decorator';
 
-  import HelloWorld from '@/components/HelloWorld';
+import HelloWorld from '@/components/HelloWorld';
 
-  @Component({
-    components: {
-      HelloWorld
-    }
-  })
-  export default class extends Vue {
+@Component({
+  components: {
+    HelloWorld,
+  },
+})
+export default class extends Vue {
 
-  }
+}
 </script>
 
 <style scoped>

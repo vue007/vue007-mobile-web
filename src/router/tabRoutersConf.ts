@@ -6,25 +6,25 @@ import {RouteConfigInfo} from '@/common/types/base/Router';
  * @Description: TODO
  */
 
-let tabRoutersConf:Array<RouteConfigInfo> = [
+const tabRoutersConf: RouteConfigInfo[] = [
   {
     path: '/home',
     name: 'home',
     component: 'Home',
-    meta: { title: '主页', icon: 'home' }
+    meta: { title: '主页', icon: 'home' },
   },
   {
     path: '/add',
     name: 'add',
     component: 'Add',
-    meta: { title: '发布', icon: 'camera', footer: 'hidden' }
+    meta: { title: '发布', icon: 'camera', footer: 'hidden' },
   },
   {
     path: '/user-center',
     name: 'userCenter',
     component: 'UserCenter',
-    meta: { title: '我的', icon: 'user' }
+    meta: { title: '我的', icon: 'user' },
   },
 ];
 
-export { tabRoutersConf }
+export { tabRoutersConf };

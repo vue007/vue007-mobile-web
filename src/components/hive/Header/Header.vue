@@ -16,25 +16,23 @@
 </template>
 
 <script lang="ts">
-  import {Component, Emit, Prop, Vue} from "vue-property-decorator";
-  @Component({
-    name: 'hi-header',
-  })
-  export default class Header extends Vue {
-    public static readonly EMIT_LEFT_CLICK:string = 'leftClick';
-    public static readonly EMIT_RIGHT_CLICK:string = 'rightClick';
+import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
+@Component({
+  name: 'hi-header',
+})
+export default class Header extends Vue {
 
-    @Prop({ default: '主页' }) readonly title: string;
+  @Prop({ type: String }) private title!: string;
 
-    @Emit(Header.EMIT_LEFT_CLICK)
-    private handleLeftClick() {
-
-    }
-    @Emit(Header.EMIT_RIGHT_CLICK)
-    private handleRightClick() {
-
-    }
+  @Emit('leftClick')
+  private handleLeftClick() {
+    // empty
   }
+  @Emit('rightClick')
+  private handleRightClick() {
+    // empty
+  }
+}
 </script>
 
 <style lang="scss" scoped>

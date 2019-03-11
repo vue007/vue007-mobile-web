@@ -11,6 +11,8 @@
   "rules": {
     "quotemark": [true, "single"],
     "indent": [true, "spaces", 2],
+    "no-empty": [true, "allow-empty-catch", "allow-empty-functions"],
+    "no-console": [false, "log", "warn"],
     "interface-name": false,
     "ordered-imports": false,
     "object-literal-sort-keys": false,

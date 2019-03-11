@@ -7,14 +7,14 @@ import {catchRoute, matchTabRoutes} from '@/router/utils';
 
 Vue.use(Router);
 
-const lazyRoutes:any = {
+const lazyRoutes: any = {
   Home: () => import(/* webpackChunkName: "home" */
       '@/views/home/index.vue').catch(catchRoute),
   Add: () => import(/* webpackChunkName: "add" */
       '@/views/About.vue').catch(catchRoute),
   UserCenter: () => import(/* webpackChunkName: "user-center" */
       '@/views/userCenter/index.vue').catch(catchRoute),
-}
+};
 
 matchTabRoutes(tabRoutersConf);
 
@@ -32,14 +32,14 @@ const router = new Router({
           path: '/login',
           name: 'login',
           component: () => import(/* webpackChunkName: "login" */ '@/views/base/login/index.vue').catch(catchRoute),
-          meta: { title: '主页', icon: 'home', header: 'hidden' }
+          meta: { title: '主页', icon: 'home', header: 'hidden' },
         },
-      ])
+      ]),
     },
   ],
 });
 
-router.beforeEach( (to:any, from:any, next:any) => {
+router.beforeEach( (to: any, from: any, next: any) => {
   // TODO 待完成登录判断
   // if (
   //     true
@@ -53,7 +53,7 @@ router.beforeEach( (to:any, from:any, next:any) => {
   // }
     next();
 });
-router.afterEach( (to:any, from:any) => {
+router.afterEach( (to: any, from: any) => {
 });
 
 export { router, lazyRoutes };

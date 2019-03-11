@@ -14,40 +14,39 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import { namespace } from 'vuex-class';
+import {Component, Prop, Vue} from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
 
-  const baseModule = namespace('base');
+const baseModule = namespace('base');
 
-  import LayoutHeader from './LayoutHeader'
-  import LayoutFooter from './LayoutFooter'
+import { LayoutHeader, LayoutFooter } from './';
 
-  @Component({
-    components: {
-      LayoutHeader, LayoutFooter,
+@Component({
+  components: {
+    LayoutHeader, LayoutFooter,
+  },
+})
+export default class Layout extends Vue {
+
+  @baseModule.Getter private showHeader!: boolean;
+  @baseModule.Getter private showFooter!: boolean;
+
+  get contentStyle() {
+    if ( !this.showHeader ) {
+      return {
+        paddingTop: 0,
+      };
     }
-  })
-  export default class Layout extends Vue {
-
-    @baseModule.Getter showHeader;
-    @baseModule.Getter showFooter;
-
-    get contentStyle() {
-      if ( !this.showHeader ) {
-        return {
-          paddingTop: 0
-        }
-      }
-      if ( this.showFooter ) {
-        return {
-          paddingBottom: 0
-        }
-      }
+    if ( this.showFooter ) {
+      return {
+        paddingBottom: 0,
+      };
     }
-
-
-
   }
+
+
+
+}
 </script>
 
 <style lang="scss" scoped>

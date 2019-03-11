@@ -9,21 +9,21 @@
 </template>
 
 <script>
-import { Button, Toast } from "mand-mobile";
+import { Button, Toast } from 'mand-mobile';
 
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   components: {
-    [Button.name]: Button
+    [Button.name]: Button,
   },
   props: {
-    msg: String
+    msg: String,
   },
   methods: {
     greet() {
-      Toast.info("I'm Batman!");
-    }
-  }
+      Toast.info('I\'m Batman!');
+    },
+  },
 };
 </script>
 

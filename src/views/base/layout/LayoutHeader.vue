@@ -3,7 +3,10 @@
 <!-- @Description 布局头部 -->
 <template>
   <div class="layout-header">
-    <hi-header :title="title" @leftClick="handleLeftClick" >
+    <hi-header
+        :title="title"
+               @leftClick="handleLeftClick"
+    >
       <icon slot="left" name="arrow-left"></icon>
       <div slot="right" style="width: 16px;"></div>
     </hi-header>
@@ -11,28 +14,24 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from "vue-property-decorator";
-  import { Icon } from 'mand-mobile';
-  import { HiHeader } from '@/components/hive/index';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Icon } from 'mand-mobile';
+import { HiHeader } from '@/components/hive/index';
 
-  @Component({
-    components: {
-      Icon,
-      HiHeader,
-    }
-  })
-  export default class LayoutHeader extends Vue {
-    get title() {
-      return this.$route.meta.title
-    }
-    get hiddenHeader() { // TODO 优化成全局方法
-
-      return this.$route.meta.header === 'hidden';
-    }
-    handleLeftClick() {
-      this.$router.go(-1);
-    }
+@Component({
+  components: {
+    Icon,
+    HiHeader,
+  },
+})
+export default class LayoutHeader extends Vue {
+  get title() {
+    return this.$route.meta.title;
   }
+  public handleLeftClick() {
+    this.$router.go(-1);
+  }
+}
 </script>
 
 <style lang="scss" scoped>

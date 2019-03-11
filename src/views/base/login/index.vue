@@ -11,19 +11,19 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import { Button }from 'mand-mobile';
-  import MdField from 'mand-mobile/components/field/index.vue';
+import {Component, Prop, Vue} from 'vue-property-decorator';
+import { Button } from 'mand-mobile';
+import MdField from 'mand-mobile/components/field/index.vue';
 
-  @Component({
-    components: {
-      MdField,
-      [Button.name]: Button
-    }
-  })
-  export default class extends Vue {
+@Component({
+  components: {
+    MdField,
+    [Button.name]: Button,
+  },
+})
+export default class extends Vue {
 
-  }
+}
 </script>
 
 <style lang="scss" scoped>

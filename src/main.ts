@@ -3,8 +3,8 @@ import App from './App.vue';
 import { router } from './router/index';
 import store from './store/index';
 import './registerServiceWorker';
-import "normalize.css";
-import { sync } from 'vuex-router-sync'
+import 'normalize.css';
+import { sync } from 'vuex-router-sync';
 
 Vue.config.productionTip = false;
 

@@ -15,8 +15,8 @@ export interface RouterMeta {
 }
 
 export interface RouteConfigInfo extends RouteConfig { // 路由配置信息： 组件通过名称进行注入
-  component:any; //
+  component: any; //
   children?: any;
-  meta?: RouterMeta
+  meta?: RouterMeta;
 }
 
