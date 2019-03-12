@@ -4,7 +4,7 @@
 <template>
   <div class="header">
     <div class="header-left" @click="handleLeftClick">
-      <slot name="left"></slot>
+      <slot name="left" v-if="showFooter"></slot>
     </div>
     <div class="header-title">
       {{ title }}
@@ -23,10 +23,12 @@ import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
 export default class Header extends Vue {
 
   @Prop({ type: String }) private title!: string;
+  @Prop({ type: Boolean, default: true }) private showFooter!: boolean;
 
   @Emit('leftClick')
   private handleLeftClick() {
     // empty
+    this.$router.go(-1);
   }
   @Emit('rightClick')
   private handleRightClick() {

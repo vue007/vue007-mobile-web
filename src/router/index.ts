@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import BaseLayout from '@/views/base/layout/Layout.vue';
 
 import { tabRoutersConf } from './tabRoutersConf';
-import {catchRoute, matchTabRoutes} from '@/router/utils';
+import {catchRoute, filterTabRoutes, matchTabRoutes} from '@/router/utils';
 
 Vue.use(Router);
 
@@ -16,7 +16,7 @@ const lazyRoutes: any = {
       '@/views/userCenter/index.vue').catch(catchRoute),
 };
 
-matchTabRoutes(tabRoutersConf);
+matchTabRoutes(filterTabRoutes(tabRoutersConf));
 
 const router = new Router({
   mode: 'history',

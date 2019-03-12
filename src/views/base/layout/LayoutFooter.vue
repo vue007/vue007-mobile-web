@@ -20,15 +20,20 @@
         </div>
       </template>
     </md-tab-bar>
+
+    <!--<div class="layout-footer-center">-->
+      <!--+-->
+    <!--</div>-->
   </div>
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+  import {Component, Prop, Vue, Watch} from "vue-property-decorator";
 import { tabRoutersConf } from '@/router/tabRoutersConf';
 
 import { RouteConfig } from 'vue-router';
-import {TabBar, Icon} from 'mand-mobile';
+import { TabBar, Icon } from 'mand-mobile';
+
 @Component({
   components: {
     [TabBar.name]: TabBar, [Icon.name]: Icon,
@@ -36,15 +41,20 @@ import {TabBar, Icon} from 'mand-mobile';
 })
 export default class LayoutFooter extends Vue {
   private tabItems: RouteConfig[] = tabRoutersConf;
+  private current: string = this.$store.state.route.name;
 
-  get current() { // 底部导航当前选项
-    return this.$route.name;
-  }
-  set current(name: string) {
-    // hack v-model
+  @Watch('$store.state.route.name')
+  onRouteChange(val: string, oldVal: string){
+    this.current = val;
   }
 
-  public handleTabChange(item: any) {
+  public handleTabChange(item: RouteConfig, index: number, prevIndex: number) {
+    if ( item.path === '' ) { // 为以后添加新 tab 作预留
+      this.$nextTick( () => { this.$nextTick( () => {
+        this.current = tabRoutersConf[prevIndex].name;
+      });});
+      return;
+    }
     this.$router.push({ name: item.name});
   }
 
@@ -53,4 +63,18 @@ export default class LayoutFooter extends Vue {
 
 <style lang="scss" scoped>
   @import './layout';
+
+  .layout-footer {
+    &-center {
+      position: absolute;
+      z-index: 100;
+      width: 100px;
+      left:0;
+      right: 0;
+      top:0;
+      bottom: 0;
+
+      margin:auto;
+    }
+  }
 </style>

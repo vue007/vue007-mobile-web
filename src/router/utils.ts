@@ -1,5 +1,6 @@
-import {RouteConfigInfo} from '@/common/types/base/Router';
-import {lazyRoutes} from '@/router/index';
+import { RouteConfigInfo } from '@/common/types/base/Router';
+import { lazyRoutes } from '@/router/index';
+import { clone as _clone } from 'lodash'
 
 /**
  * @Author: akai
@@ -9,6 +10,16 @@ import {lazyRoutes} from '@/router/index';
 
 export function catchRoute(error: any) { // TODO 通过@import catch 实现缓存问题
   console.log(error, 'catchRoute');
+}
+
+export function filterTabRoutes(routesConf: RouteConfigInfo[]) {
+  const _routesConf: RouteConfigInfo[] = _clone(routesConf)
+  _routesConf.forEach( (routeItem, index) => {
+    if ( routeItem.component === undefined ) {
+      _routesConf.splice(index, 1);
+    }
+  });
+  return _routesConf;
 }
 
 export function matchTabRoutes(routesConf: RouteConfigInfo[]) {
@@ -26,5 +37,7 @@ export function matchTabRoutes(routesConf: RouteConfigInfo[]) {
       matchTabRoutes(routeItem.children);
     }
   }
+
+  return routesConf;
 
 }
