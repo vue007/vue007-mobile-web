@@ -24,6 +24,7 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "@epegzz/sass-vars-loader": "^4.3.1",
     "@types/jest": "^23.1.4",
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-e2e-cypress": "^3.4.0",

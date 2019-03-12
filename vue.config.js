@@ -50,7 +50,7 @@ module.exports = {
               propWhiteList: []
             }),
             'autoprefixer'
-          ])
+          ]),
         ],
         import: [
           resolve('./src/assets/theme.custom.2x')
@@ -74,7 +74,22 @@ module.exports = {
         .loader('svg-sprite-loader')
         .end()
         .use('svgo-loader')
-        .loader('svgo-loader')
+        .loader('svgo-loader');
+
+    /* 从 js 中读取 sass 变量 */
+    const files = fs.readdirSync('./src/styles/');
+
+    files.forEach(file => {
+      config.module.rule('scss').oneOf('vue')
+          .use('sass-vars-loader')
+          .loader('@epegzz/sass-vars-loader')
+          .options({
+            syntax: 'scss',
+            files: [
+              path.resolve(__dirname, `./src/common/styleVars.json`)
+            ]
+          })
+    });
 
   },
 

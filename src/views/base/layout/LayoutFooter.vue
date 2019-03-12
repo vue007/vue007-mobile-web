@@ -21,9 +21,9 @@
       </template>
     </md-tab-bar>
 
-    <!--<div class="layout-footer-center">-->
-      <!--+-->
-    <!--</div>-->
+    <div class="layout-footer-center">
+      {{centerItem.name}}
+    </div>
   </div>
 </template>
 
@@ -41,6 +41,7 @@ import { TabBar, Icon } from 'mand-mobile';
 })
 export default class LayoutFooter extends Vue {
   private tabItems: RouteConfig[] = tabRoutersConf;
+  private centerItem: RouteConfig = tabRoutersConf[parseInt(tabRoutersConf.length/2)];
   private current: string = this.$store.state.route.name;
 
   @Watch('$store.state.route.name')
