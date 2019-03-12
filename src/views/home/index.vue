@@ -1,6 +1,6 @@
 <!-- @Author akai -->
 <!-- @Create 2019-03-07 15:50 -->
-<!-- @Description TODO -->
+<!-- @Description 主页 -->
 <template>
   <div class="page">
     <HelloWorld msg="Welcome to Your Mand Mobile"/>
